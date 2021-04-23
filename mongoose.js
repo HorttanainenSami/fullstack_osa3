@@ -8,9 +8,9 @@ if (process.argv.length<3){
 const password = process.argv[2]
 
 
-const url = `mongodb+srv://fullstack:${password}@cluster0.atjpy.mongodb.net/phonebook?retryWrites=true&w=majority` 
+const url = `mongodb+srv://fullstack:${password}@cluster0.atjpy.mongodb.net/phonebook?retryWrites=true&w=majority`
 
-mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true})
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
 
 const personSchema = new mongoose.Schema({
   name: String,
@@ -26,12 +26,12 @@ if(process.argv.length === 5){
     name: process.argv[3],
     number: process.argv[4]
   })
-  person.save().then(response =>{
+  person.save().then(response => {
     console.log(`saved ${response}`)
     mongoose.connection.close()
   })
 }else{
-  Person.find({}).then(result =>{
+  Person.find({}).then(result => {
     result.forEach(person => console.log(person) )
     mongoose.connection.close()
   })
